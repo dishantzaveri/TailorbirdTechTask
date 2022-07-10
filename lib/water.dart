@@ -1,28 +1,23 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, avoid_unnecessary_containers, unnecessary_new, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, file_names, prefer_const_constructors_in_immutables, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:tailorbirdtask/Waterpage.dart';
 import 'package:tailorbirdtask/detailsPage.dart';
-import 'package:tailorbirdtask/water.dart';
 
-void main() => runApp(MyApp());
+class WaterPage extends StatefulWidget {
+  final heroTag;
+  final foodName;
+  final foodPrice;
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  WaterPage({this.heroTag, this.foodName, this.foodPrice});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  _WaterPageState createState() => _WaterPageState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+class _WaterPageState extends State<WaterPage> {
+  var selectedCard = 'WEIGHT';
 
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: EdgeInsets.only(left: 40.0),
             child: Row(
               children: <Widget>[
-                Text('Food',
+                Text('Water',
                     style: TextStyle(
                         fontFamily: 'Montserrat',
                         color: Colors.white,
@@ -96,13 +91,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: MediaQuery.of(context).size.height - 300.0,
                         child: ListView(children: [
                           _buildFoodItem(
-                              'assets/plate1.png', 'Salmon bowl', '\$24.00'),
+                              'assets/100ml.jpg', 'Water 100ml', '\$20.00'),
                           _buildFoodItem(
-                              'assets/plate2.png', 'Spring bowl', '\$22.00'),
+                              'assets/250ml.jpg', 'Water 250ml', '\$50.00'),
                           _buildFoodItem(
-                              'assets/plate6.png', 'Avocado bowl', '\$26.00'),
+                              'assets/500ml.jpg', 'Water 500ml', '\$100.00'),
                           _buildFoodItem(
-                              'assets/plate5.png', 'Berry bowl', '\$24.00')
+                              'assets/1000ml.jpg', 'water 1L', '\$200.00')
                         ]))),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -122,24 +117,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Container(
-                        height: 65.0,
-                        width: 60.0,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.grey,
-                              style: BorderStyle.solid,
-                              width: 1.0),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        // ignore: unnecessary_new
-                        child: new IconButton(
-                          icon: new Icon(Icons.water_drop),
-                          highlightColor: Colors.black,
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => WaterPage()));
-                          },
-                        )),
+                      height: 65.0,
+                      width: 60.0,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.grey,
+                            style: BorderStyle.solid,
+                            width: 1.0),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Center(
+                        child: Icon(Icons.water_drop, color: Colors.black),
+                      ),
+                    ),
                     Container(
                       height: 65.0,
                       width: 120.0,
@@ -173,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => DetailsPage(
+                  builder: (context) => WaterDetails(
                       heroTag: imgPath, foodName: foodName, foodPrice: price)));
             },
             child: Row(

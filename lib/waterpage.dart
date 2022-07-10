@@ -2,18 +2,18 @@
 
 import 'package:flutter/material.dart';
 
-class DetailsPage extends StatefulWidget {
+class WaterDetails extends StatefulWidget {
   final heroTag;
   final foodName;
   final foodPrice;
 
-  DetailsPage({this.heroTag, this.foodName, this.foodPrice});
+  WaterDetails({this.heroTag, this.foodName, this.foodPrice});
 
   @override
-  _DetailsPageState createState() => _DetailsPageState();
+  _WaterDetailsState createState() => _WaterDetailsState();
 }
 
-class _DetailsPageState extends State<DetailsPage> {
+class _WaterDetailsState extends State<WaterDetails> {
   var selectedCard = 'WEIGHT';
 
   @override
