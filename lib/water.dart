@@ -1,8 +1,10 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, file_names, prefer_const_constructors_in_immutables, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, unused_import
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, file_names, prefer_const_constructors_in_immutables, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, unused_import, unnecessary_new
 
 import 'package:flutter/material.dart';
 import 'package:tailorbirdtask/Waterpage.dart';
 import 'package:tailorbirdtask/detailsPage.dart';
+import 'package:tailorbirdtask/main.dart';
+import 'package:tailorbirdtask/summary.dart';
 
 class WaterPage extends StatefulWidget {
   final heroTag;
@@ -103,19 +105,23 @@ class _WaterPageState extends State<WaterPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Container(
-                      height: 65.0,
-                      width: 60.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Colors.grey,
-                            style: BorderStyle.solid,
-                            width: 1.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Center(
-                        child: Icon(Icons.search, color: Colors.black),
-                      ),
-                    ),
+                        height: 65.0,
+                        width: 60.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.grey,
+                              style: BorderStyle.solid,
+                              width: 1.0),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: IconButton(
+                          icon: Icon(Icons.food_bank),
+                          highlightColor: Colors.black,
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => MyHomePage()));
+                          },
+                        )),
                     Container(
                       height: 65.0,
                       width: 60.0,
@@ -130,22 +136,28 @@ class _WaterPageState extends State<WaterPage> {
                         child: Icon(Icons.water_drop, color: Colors.black),
                       ),
                     ),
-                    Container(
-                      height: 65.0,
-                      width: 120.0,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.grey,
-                              style: BorderStyle.solid,
-                              width: 1.0),
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Color(0xFF1C1428)),
-                      child: Center(
-                          child: Text('Summary',
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  color: Colors.white,
-                                  fontSize: 15.0))),
+                    new GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SummaryPage()));
+                      },
+                      child: Container(
+                        height: 65.0,
+                        width: 120.0,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Colors.grey,
+                                style: BorderStyle.solid,
+                                width: 1.0),
+                            borderRadius: BorderRadius.circular(10.0),
+                            color: Color(0xFF1C1428)),
+                        child: Center(
+                            child: Text('Summary',
+                                style: TextStyle(
+                                    fontFamily: 'Montserrat',
+                                    color: Colors.white,
+                                    fontSize: 15.0))),
+                      ),
                     )
                   ],
                 )
